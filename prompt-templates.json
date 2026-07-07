@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "last_modified": "2026-06-23T03:04:44+03:00",
+  "templates": [
+    {
+      "id": "gemini-wide",
+      "tool": "gemini",
+      "environment": "antigravity",
+      "mode": "read-only",
+      "focus": "wide cross-file consistency: does the change break anything elsewhere, is there duplicated logic across files, are there dependency or type conflicts. Use the large context to scan widely."
+    },
+    {
+      "id": "deepseek-deep",
+      "tool": "deepseek",
+      "environment": "roo-code",
+      "mode": "read-only",
+      "focus": "deep local scan of the listed files: logic errors, edge-case failures, bugs, and each checklist item. Go deep, not wide."
+    },
+    {
+      "id": "rabbit-scan",
+      "tool": "rabbit",
+      "environment": "antigravity",
+      "mode": "read-only",
+      "focus": "frontend layout and rendering bugs in the listed files: broken responsive behavior, visual regressions, accessibility issues."
+    },
+    {
+      "id": "coderabbit-deep",
+      "tool": "coderabbit",
+      "environment": "cli",
+      "mode": "read-only",
+      "focus": "deep code-level review of the listed files: logic errors, edge-case failures, security issues, async/concurrency bugs, and best-practice violations. Report each with file, line, and severity."
+    }
+  ]
+}

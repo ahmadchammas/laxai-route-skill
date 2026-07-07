@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "last_modified": "2026-06-23T03:52:07+03:00",
+  "tools": [
+    {
+      "id": "claude-code",
+      "use": "orchestration, the only writer to the main dir",
+      "status": "internal"
+    },
+    {
+      "id": "context-mode",
+      "use": "sandbox compute so raw bytes stay out of context",
+      "status": "active"
+    },
+    {
+      "id": "claude-mem",
+      "use": "cross-session memory",
+      "status": "active"
+    },
+    {
+      "id": "google-drive",
+      "use": "read docs and reference sheets",
+      "status": "active"
+    },
+    {
+      "id": "google-calendar",
+      "use": "schedule direct activities (writes confirm)",
+      "status": "active"
+    },
+    {
+      "id": "github",
+      "use": "repo and PR operations",
+      "status": "active"
+    },
+    {
+      "id": "gemini-pro",
+      "use": "wide cross-file review (Antigravity)",
+      "status": "external"
+    },
+    {
+      "id": "deepseek",
+      "use": "deep local audit (Roo Code)",
+      "status": "external"
+    },
+    {
+      "id": "framer-motion",
+      "use": "web animation, UI motion",
+      "status": "active"
+    },
+    {
+      "id": "rabbit",
+      "use": "bug and layout detection (CodeRabbit)",
+      "status": "active"
+    },
+    {
+      "id": "xui-pro-max",
+      "use": "UI design system",
+      "status": "active"
+    },
+    {
+      "id": "composio",
+      "use": "WhatsApp / LinkedIn connectors",
+      "status": "deferred"
+    },
+    {
+      "id": "coderabbit",
+      "use": "AI code review / debugging CLI (logic errors, bugs, security, best practices)",
+      "status": "active"
+    },
+    {
+      "id": "motion",
+      "use": "Motion (motion.dev) — framework-agnostic web animation library (React/JS/Vue), the current generation of Framer Motion; added per project via npm i motion",
+      "status": "active"
+    }
+  ]
+}

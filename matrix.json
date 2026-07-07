@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "last_modified": "2026-07-02",
+  "rows": [
+    {
+      "id": "bulk-read",
+      "task": "Bulk reading, summarizing, mechanical text",
+      "model": "haiku-4-5",
+      "effort": "normal",
+      "why": "fast, cheap, no reasoning"
+    },
+    {
+      "id": "daily-ops",
+      "task": "Daily ops (start-day, board, status)",
+      "model": "sonnet-4-6",
+      "effort": "normal",
+      "why": "standing rule: daily ops on Sonnet"
+    },
+    {
+      "id": "single-file",
+      "task": "Single-file change, standard fix, bulk drafting",
+      "model": "sonnet-4-6",
+      "effort": "normal",
+      "why": "balanced"
+    },
+    {
+      "id": "multi-file",
+      "task": "Multi-file feature, moderate complexity",
+      "model": "opus-4-8",
+      "effort": "high",
+      "why": "cross-file judgment"
+    },
+    {
+      "id": "writing",
+      "task": "Writing in your voice (posts, chapters)",
+      "model": "opus-4-8",
+      "effort": "high",
+      "why": "voice quality"
+    },
+    {
+      "id": "architecture",
+      "task": "Architecture, hard debugging, orchestration, decision from reports",
+      "model": "opus-4-8",
+      "effort": "max",
+      "why": "a wrong call costs more than tokens"
+    },
+    {
+      "id": "wide-context",
+      "task": "Cross-file scan over ~100k tokens",
+      "model": "gemini-pro",
+      "effort": "n/a",
+      "why": "1M context is the edge"
+    },
+    {
+      "id": "cheap-audit",
+      "task": "Cheap analytical audit, bug-pattern scan",
+      "model": "deepseek",
+      "effort": "n/a",
+      "why": "low cost, strong analytical read"
+    },
+    {
+      "id": "frontier-synthesis",
+      "task": "System-design synthesis, doctrine writing, multi-workstream planning, deep build critique",
+      "model": "claude-fable-5",
+      "effort": "xhigh",
+      "why": "judgment-dense artifacts where a frontier model changes the outcome; availability-gated in models.json, fallback opus-4-8/max; model id unverified until first invocation, the window plus fallback are the contract"
+    }
+  ]
+}

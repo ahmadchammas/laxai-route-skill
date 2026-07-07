@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "last_modified": "2026-07-05",
+  "models": {
+    "haiku-4-5":      { "roles": ["digest", "mechanical"] },
+    "sonnet-4-6":     { "roles": ["execute"] },
+    "opus-4-8":       { "roles": ["reason", "review", "execute-hard"] },
+    "claude-fable-5": { "roles": ["reason", "review"], "availability": { "from": "2026-07-01", "to": null }, "note": "Fable window is ongoing; confirm with the operator if/when a real end date is set, outside it the ladder falls back automatically" },
+    "gemini-pro":     { "roles": ["external-wide"] },
+    "deepseek":       { "roles": ["external-audit"] }
+  },
+  "ladder": {
+    "digest":  ["haiku-4-5"],
+    "reason":  ["claude-fable-5", "opus-4-8"],
+    "execute": ["sonnet-4-6", "opus-4-8"],
+    "review":  ["claude-fable-5", "opus-4-8"]
+  },
+  "effort_defaults": { "digest": "normal", "plan": "high", "architecture": "max", "build": "per-plan", "verify": "normal", "critique": "max" }
+}
