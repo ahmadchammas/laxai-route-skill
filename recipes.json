@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "last_modified": "2026-07-02",
+  "recipes": [
+    {
+      "id": "feature-build",
+      "name": "Build a software feature",
+      "keywords": [
+        "feature",
+        "build",
+        "code",
+        "implement",
+        "function",
+        "module",
+        "bug",
+        "fix",
+        "backend",
+        "api"
+      ],
+      "model": "opus-4-8",
+      "effort": "high",
+      "skills": [
+        "test-driven-development",
+        "systematic-debugging"
+      ],
+      "tools": [
+        "deepseek",
+        "gemini-pro"
+      ],
+      "chain": [
+        {
+          "step": "plan",
+          "who": "opus-4-8/high"
+        },
+        {
+          "step": "build",
+          "who": "opus-4-8/high",
+          "writes": true
+        },
+        {
+          "step": "deep audit",
+          "who": "external:deepseek",
+          "your_step": true,
+          "template": "deepseek-deep"
+        },
+        {
+          "step": "wide check",
+          "who": "external:gemini",
+          "your_step": true,
+          "template": "gemini-wide"
+        },
+        {
+          "step": "decide + fix",
+          "who": "opus-4-8/high"
+        }
+      ],
+      "review_checklist": [
+        "no logic errors in changed files",
+        "edge cases handled",
+        "no broken callers elsewhere"
+      ],
+      "external_prompts": [
+        "deepseek-deep",
+        "gemini-wide"
+      ]
+    },
+    {
+      "id": "site-build",
+      "name": "Build or redesign a site / UI",
+      "keywords": [
+        "site",
+        "ui",
+        "ux",
+        "redesign",
+        "landing",
+        "dashboard",
+        "page",
+        "component",
+        "frontend",
+        "css",
+        "layout",
+        "design"
+      ],
+      "model": "opus-4-8",
+      "effort": "high",
+      "skills": [
+        "ui-ux-pro-max",
+        "frontend-design"
+      ],
+      "tools": [
+        "motion",
+        "rabbit",
+        "gemini-pro"
+      ],
+      "chain": [
+        {
+          "step": "plan the UI",
+          "who": "sonnet-4-6+ui-ux-pro-max (subagent)",
+          "reports_to": "opus"
+        },
+        {
+          "step": "build",
+          "who": "opus-4-8/high",
+          "writes": true
+        },
+        {
+          "step": "bug scan",
+          "who": "external:rabbit",
+          "your_step": true,
+          "template": "rabbit-scan"
+        },
+        {
+          "step": "cross-file check",
+          "who": "external:gemini",
+          "your_step": true,
+          "template": "gemini-wide"
+        },
+        {
+          "step": "decide + fix",
+          "who": "opus-4-8/high"
+        }
+      ],
+      "review_checklist": [
+        "responsive at mobile/tablet/desktop",
+        "no duplicated component logic",
+        "matches the design system"
+      ],
+      "external_prompts": [
+        "gemini-wide"
+      ]
+    },
+    {
+      "id": "code-review",
+      "name": "Code review / bug hunt",
+      "keywords": [
+        "review",
+        "audit",
+        "bug",
+        "hunt",
+        "quality",
+        "lint",
+        "security",
+        "smell",
+        "regression"
+      ],
+      "model": "opus-4-8",
+      "effort": "high",
+      "skills": [
+        "code-review",
+        "critique"
+      ],
+      "tools": [
+        "deepseek",
+        "gemini-pro",
+        "coderabbit"
+      ],
+      "chain": [
+        {
+          "step": "deep local scan",
+          "who": "external:deepseek",
+          "your_step": true,
+          "template": "deepseek-deep"
+        },
+        {
+          "step": "wide cross-file scan",
+          "who": "external:gemini",
+          "your_step": true,
+          "template": "gemini-wide"
+        },
+        {
+          "step": "code review (CodeRabbit)",
+          "who": "external:coderabbit",
+          "your_step": true,
+          "template": "coderabbit-deep"
+        },
+        {
+          "step": "decide + fix",
+          "who": "opus-4-8/high"
+        }
+      ],
+      "review_checklist": [
+        "correctness bugs",
+        "cross-file consistency",
+        "duplicated logic"
+      ],
+      "external_prompts": [
+        "deepseek-deep",
+        "gemini-wide",
+        "coderabbit-deep"
+      ]
+    },
+    {
+      "id": "write-in-your-voice",
+      "name": "Write in your voice (posts, chapters)",
+      "keywords": [
+        "write",
+        "post",
+        "article",
+        "chapter",
+        "blog",
+        "quora",
+        "medium",
+        "substack",
+        "draft",
+        "voice",
+        "essay"
+      ],
+      "model": "opus-4-8",
+      "effort": "high",
+      "skills": [
+        "writing-style",
+        "humanizer"
+      ],
+      "tools": [],
+      "chain": [
+        {
+          "step": "draft",
+          "who": "opus-4-8/high",
+          "writes": true
+        },
+        {
+          "step": "self-edit to voice",
+          "who": "opus-4-8/high"
+        }
+      ],
+      "review_checklist": [
+        "plain, no AI tells",
+        "sounds like you, not the model"
+      ],
+      "external_prompts": []
+    },
+    {
+      "id": "problem-solve",
+      "name": "Critical-thinking / problem framing",
+      "keywords": [
+        "problem",
+        "decide",
+        "decision",
+        "strategy",
+        "think",
+        "framework",
+        "tradeoff",
+        "option",
+        "why",
+        "root",
+        "cause"
+      ],
+      "model": "opus-4-8",
+      "effort": "max",
+      "skills": [
+        "critique",
+        "team",
+        "decision-logger",
+        "deep-research"
+      ],
+      "tools": [],
+      "chain": [
+        {
+          "step": "frame the problem",
+          "who": "opus-4-8/max"
+        },
+        {
+          "step": "pressure-test (critique + team)",
+          "who": "opus-4-8/max"
+        },
+        {
+          "step": "research if facts missing",
+          "who": "opus-4-8/high"
+        },
+        {
+          "step": "recommend + log",
+          "who": "opus-4-8/max"
+        }
+      ],
+      "review_checklist": [
+        "problem stated cleanly",
+        "options with trade-offs",
+        "recommendation marked"
+      ],
+      "external_prompts": []
+    },
+    {
+      "id": "research",
+      "name": "Research a topic / market / leads",
+      "keywords": [
+        "research",
+        "market",
+        "lead",
+        "topic",
+        "sources",
+        "investigate",
+        "compare",
+        "landscape",
+        "competitor"
+      ],
+      "model": "opus-4-8",
+      "effort": "high",
+      "skills": [
+        "deep-research",
+        "firecrawl"
+      ],
+      "tools": [
+        "gemini-pro"
+      ],
+      "chain": [
+        {
+          "step": "fan-out search",
+          "who": "opus-4-8/high"
+        },
+        {
+          "step": "wide synthesis",
+          "who": "gemini-pro"
+        },
+        {
+          "step": "cite + report",
+          "who": "opus-4-8/high",
+          "writes": true
+        }
+      ],
+      "review_checklist": [
+        "claims sourced",
+        "no unverified assertion"
+      ],
+      "external_prompts": []
+    },
+    {
+      "id": "plan-scope",
+      "name": "Plan / scope a project or feature",
+      "keywords": [
+        "plan",
+        "scope",
+        "spec",
+        "design",
+        "brainstorm",
+        "kickoff",
+        "architecture",
+        "blueprint"
+      ],
+      "model": "opus-4-8",
+      "effort": "high",
+      "skills": [
+        "brainstorming",
+        "grill-me",
+        "writing-plans",
+        "critique"
+      ],
+      "tools": [],
+      "chain": [
+        {
+          "step": "brainstorm",
+          "who": "opus-4-8/high"
+        },
+        {
+          "step": "critique",
+          "who": "opus-4-8/high"
+        },
+        {
+          "step": "write plan",
+          "who": "opus-4-8/high",
+          "writes": true
+        }
+      ],
+      "review_checklist": [
+        "no placeholders",
+        "tasks are bite-sized"
+      ],
+      "external_prompts": []
+    },
+    {
+      "id": "data-analysis",
+      "name": "Analyze data / spreadsheets",
+      "keywords": [
+        "data",
+        "spreadsheet",
+        "xlsx",
+        "csv",
+        "sheet",
+        "finance",
+        "numbers",
+        "aggregate",
+        "chart",
+        "analysis"
+      ],
+      "model": "sonnet-4-6",
+      "effort": "normal",
+      "skills": [
+        "xlsx"
+      ],
+      "tools": [
+        "context-mode"
+      ],
+      "chain": [
+        {
+          "step": "compute in sandbox",
+          "who": "sonnet-4-6/normal"
+        },
+        {
+          "step": "report the answer",
+          "who": "sonnet-4-6/normal",
+          "writes": true
+        }
+      ],
+      "review_checklist": [
+        "math checks out",
+        "raw rows kept out of context"
+      ],
+      "external_prompts": []
+    },
+    {
+      "id": "daily-ops",
+      "name": "Daily ops / routine",
+      "keywords": [
+        "start",
+        "day",
+        "board",
+        "status",
+        "reconcile",
+        "routine",
+        "standup",
+        "checkin",
+        "handoff"
+      ],
+      "model": "sonnet-4-6",
+      "effort": "normal",
+      "skills": [
+        "task-management"
+      ],
+      "tools": [],
+      "chain": [
+        {
+          "step": "run the routine",
+          "who": "sonnet-4-6/normal"
+        }
+      ],
+      "review_checklist": [
+        "board reconciled",
+        "nothing stale"
+      ],
+      "external_prompts": []
+    },
+    {
+      "id": "strategy-scan",
+      "name": "Portfolio / strategy scan",
+      "keywords": [
+        "strategy",
+        "portfolio",
+        "scan",
+        "quarterly",
+        "priorities",
+        "workstreams",
+        "master plan",
+        "across projects"
+      ],
+      "model": "opus-4-8",
+      "effort": "max",
+      "skills": [
+        "fleet",
+        "insights"
+      ],
+      "tools": [],
+      "chain": [
+        {
+          "step": "digest state",
+          "who": "haiku-4-5/normal"
+        },
+        {
+          "step": "sweep boards+handoffs read-only",
+          "who": "fleet-scout"
+        },
+        {
+          "step": "synthesize + rank",
+          "who": "opus-4-8/max"
+        },
+        {
+          "step": "decide with the operator (options)",
+          "who": "operator"
+        }
+      ],
+      "review_checklist": [
+        "every claim traceable to a board/handoff file",
+        "highest-priority lane ranked first",
+        "no new scheduled loops proposed while a blocking dependency is open"
+      ],
+      "external_prompts": []
+    }
+  ]
+}
